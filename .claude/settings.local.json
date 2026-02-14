@@ -17,7 +17,19 @@
       "Bash(curl:*)",
       "Bash(lsof:*)",
       "Bash(gh auth:*)",
-      "Bash(npx vercel --version)"
+      "Bash(npx vercel --version)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npx vercel:*)",
+      "Bash(find:*)",
+      "Bash(npm search:*)",
+      "Bash(jq:*)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "supabase",
+    "github",
+    "postgres"
+  ]
 }
