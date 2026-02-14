@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)",
+      "Bash(brew list:*)",
+      "Bash(brew install postgresql@17)",
+      "Bash(brew update:*)",
+      "Bash(git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow)",
+      "Bash(git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask fetch --unshallow)",
+      "Bash(export PATH=\"/usr/local/opt/postgresql@17/bin:$PATH\")",
+      "Bash(brew services start:*)",
+      "Bash(/usr/local/opt/postgresql@17/bin/pg_isready:*)",
+      "Bash(/usr/local/opt/postgresql@17/bin/createdb:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(curl:*)",
+      "Bash(lsof:*)",
+      "Bash(gh auth:*)",
+      "Bash(npx vercel --version)"
+    ]
+  }
+}
