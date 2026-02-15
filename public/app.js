@@ -1,5 +1,6 @@
 const form = document.getElementById('todo-form');
 const input = document.getElementById('todo-input');
+const emailInput = document.getElementById('email-input');
 const list = document.getElementById('todo-list');
 
 async function fetchTodos() {
@@ -32,11 +33,13 @@ function renderTodos(todos) {
   });
 }
 
-async function addTodo(title) {
+async function addTodo(title, email) {
+  const body = { title };
+  if (email) body.email = email;
   await fetch('/api/todos', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title }),
+    body: JSON.stringify(body),
   });
   fetchTodos();
 }
@@ -59,7 +62,7 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   const title = input.value.trim();
   if (title) {
-    addTodo(title);
+    addTodo(title, emailInput.value.trim());
     input.value = '';
   }
 });

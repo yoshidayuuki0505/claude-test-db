@@ -29,6 +29,7 @@ h1 {
 
 #todo-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 32px;
 }
@@ -49,10 +50,27 @@ h1 {
   color: rgba(255, 255, 255, 0.4);
 }
 
-#todo-input:focus {
+#todo-input:focus,
+#email-input:focus {
   border-color: rgba(138, 120, 255, 0.6);
   background: rgba(255, 255, 255, 0.12);
   box-shadow: 0 0 0 3px rgba(138, 120, 255, 0.15);
+}
+
+#email-input {
+  flex: 1 1 100%;
+  padding: 14px 18px;
+  font-size: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+#email-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
 
 #todo-form button {

@@ -1,5 +1,6 @@
 const express = require('express');
 const { pool, initDB } = require('./db');
+const { sendTodoNotification } = require('./email');
 
 const app = express();
 app.use(express.json());
@@ -20,7 +21,7 @@ app.get('/api/todos', async (req, res) => {
 app.post('/api/todos', async (req, res) => {
   try {
     if (dbReady) await dbReady;
-    const { title } = req.body;
+    const { title, email } = req.body;
     if (!title || !title.trim()) {
       return res.status(400).json({ error: 'Title is required' });
     }
@@ -28,6 +29,11 @@ app.post('/api/todos', async (req, res) => {
       'INSERT INTO todos (title) VALUES ($1) RETURNING *',
       [title.trim()]
     );
+    if (email) {
+      sendTodoNotification(email, title.trim()).catch(err =>
+        console.error('Email notification error:', err.message)
+      );
+    }
     res.status(201).json(rows[0]);
   } catch (err) {
     res.status(500).json({ error: err.message });
